@@ -16,33 +16,30 @@ public class SalariedEmployee extends Employee {
 
     private double annualWage;
 
-    public void SalariedEmployee(String name,
-				 String streetAddress,
-				 String city,
-				 String state,
-				 String birthday,
-				 String department,
-				 String title,
-				 String supervisor,
-				 double annualWage) throws ParseException, IllegalArgumentException {
+    public SalariedEmployee(String name,
+			    String streetAddress,
+			    String city,
+			    String state,
+			    String birthday,
+			    String department,
+			    String title,
+			    String supervisor,
+			    double annualWage) throws ParseException, IllegalArgumentException {
 	super(name, streetAddress, city, state, birthday, department, title, supervisor);
-	setAnnualWage(annualWage);
-    
-
-    :
+	this.annualWage = validateAnnualWage(annualWage);
     }
 
-    public void Employee(String name,
-			 String streetAddress,
-			 String city,
-			 String state,
-			 Calendar birthday,
-			 String department,
-			 String title,
-			 String supervisor,
-			 double annualWage) throws IllegalArgumentException {
+    public SalariedEmployee(String name,
+			    String streetAddress,
+			    String city,
+			    String state,
+			    Calendar birthday,
+			    String department,
+			    String title,
+			    String supervisor,
+			    double annualWage) throws IllegalArgumentException {
 	super(name, streetAddress, city, state, birthday, department, title, supervisor);
-	setAnnualWage(annualWage);
+	this.annualWage = validateAnnualWage(annualWage);
     }
 
     @Override
@@ -50,15 +47,26 @@ public class SalariedEmployee extends Employee {
 	return "SalariedEmployee{" + "annualWage=" + annualWage + '}';
     }
 
+    /**
+     * @param annualWage the annualWage to validate
+     * @return the annualWage
+     */
+    protected double validateAnnualWage(double annualWage) throws IllegalArgumentException {
+	return annualWage;
+    }
+    
+    /**
+     * @return the annualWage
+     */
     public double getAnnualWage() {
 	return annualWage;
     }
 
+    /**
+     * @param annualWage the annualWage to set
+     */
     public void setAnnualWage(double annualWage) throws IllegalArgumentException {
-	if (age <= 16 || age > 75) {
-	    throw new IllegalArgumentException("Age is not within allowable limits!");
-	}
-	this.annualWage = annualWage;
+	this.annualWage = validateAnnualWage(annualWage);
     }
 
 }
