@@ -67,6 +67,10 @@ public class SalariedEmployee extends Employee {
      * @param annualWage the annualWage to set
      */
     public void setAnnualWage(double annualWage) throws IllegalArgumentException {
+	if (annualWage < 0.0) {
+	    throw new IllegalArgumentException("Cannot have employee OWE company!");
+	}
+	
 	this.annualWage = annualWage;
     }
 
