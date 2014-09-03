@@ -8,11 +8,7 @@ package myabstract;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import my.concrete.*;
 import java.util.Calendar;
-import static java.util.Calendar.DATE;
-import static java.util.Calendar.MONTH;
-import static java.util.Calendar.YEAR;
 import java.util.Locale;
 
 /**

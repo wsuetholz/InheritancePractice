@@ -5,7 +5,6 @@
  */
 package myabstract;
 
-import my.concrete.*;
 import java.util.Calendar;
 
 /**

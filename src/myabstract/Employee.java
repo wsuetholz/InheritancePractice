@@ -92,7 +92,7 @@ public abstract class Employee {
     /**
      * @return the age calculated from birth date to today.
      */
-    public long getAge() throws IllegalArgumentException {
+    public long getAge() {
 	Calendar now = Calendar.getInstance(Locale.US);
 	long age = now.get(YEAR) - birthday.get(YEAR);
 	if (birthday.get(MONTH) > now.get(MONTH)

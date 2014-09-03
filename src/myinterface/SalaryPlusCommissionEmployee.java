@@ -5,7 +5,6 @@
  */
 package myinterface;
 
-import my.concrete.*;
 import java.util.Calendar;
 
 /**
