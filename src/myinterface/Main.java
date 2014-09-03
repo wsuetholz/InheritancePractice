@@ -12,11 +12,12 @@ package myinterface;
 public class Main {
 
     public static void main(String[] args) {
-	HourlyEmployee hourlyEmployee = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, 10);
-	SalariedEmployee salariedEmployee = new SalariedEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14);
-	SalaryPlusCommissionEmployee salaryPlusCommissionEmployee = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, 25000.00);
+	Employee employee = new EmployeeImpl("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee hourlyEmployee = new HourlyEmployeeImpl("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, 10);
+	SalariedEmployee salariedEmployee = new SalariedEmployeeImpl("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14);
+	SalaryPlusCommissionEmployee salaryPlusCommissionEmployee = new SalaryPlusCommissionEmployeeImpl("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, 25000.00);
 
-	Main.printlnEmployee ( hourlyEmployee, "Employee");  // Note, any of the constructed classes could be here!
+	Main.printlnEmployee ( employee, "Employee");  // Note, any of the constructed classes could be here!
 	Main.printlnSalariedEmployee ( salariedEmployee, "SalariedEmployee");
 	Main.printlnSalaryPlusCommissionEmployee ( salaryPlusCommissionEmployee, "SalaryPlusCommissionEmployee");
 	Main.printlnHourlyEmployee ( hourlyEmployee, "HourlyEmployee");
