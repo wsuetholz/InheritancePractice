@@ -150,7 +150,7 @@ public class SalariedEmployee extends Employee {
 	    throw new IllegalArgumentException("Birthday cannot be null!");
 	}
 
-	DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+	DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	Calendar bDay = Calendar.getInstance(Locale.US);
 	try {
 	    bDay.setTime(dateFormat.parse(birthday));
@@ -259,7 +259,7 @@ public class SalariedEmployee extends Employee {
 	    throw new IllegalArgumentException("HireDate cannot be null!");
 	}
 
-	DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+	DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	Calendar hDate = Calendar.getInstance(Locale.US);
 	try {
 	    hDate.setTime(dateFormat.parse(hireDate));
