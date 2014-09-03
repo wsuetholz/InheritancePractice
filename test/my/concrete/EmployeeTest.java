@@ -146,6 +146,17 @@ public class EmployeeTest {
 	instance.setBirthday(birthday);
     }
 
+    @Test
+    public void testSetFutureBirthday_CalendarException() {
+	System.out.println("setBirthday");
+	Calendar birthday = Calendar.getInstance(Locale.US);
+	birthday.set(Calendar.YEAR, (birthday.get(Calendar.YEAR) + 1));
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Birthday cannot be in the future!"));
+	instance.setBirthday(birthday);
+    }
+
     /**
      * Test of setBirthday method, of class Employee.
      */
@@ -175,6 +186,16 @@ public class EmployeeTest {
     public void testSetBirthday_StringException() {
 	System.out.println("setBirthday");
 	String birthday = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Birthday cannot be null!"));
+	instance.setBirthday(birthday);
+    }
+
+    @Test
+    public void testSetFutureBirthday_StringException() {
+	System.out.println("setBirthday");
+	String birthday = "01/02/2250";
 	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be null!"));
@@ -221,6 +242,30 @@ public class EmployeeTest {
     }
 
     /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testConstructorSetStreetAddressException() {
+	System.out.println("setStreetAddress");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Address cannot be null!"));
+	Employee instance = new Employee("Joe C Doe", null, "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testSetStreetAddressException() {
+	System.out.println("setStreetAddress");
+	String streetAddress = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	instance.setStreetAddress(streetAddress);
+    }
+
+    /**
      * Test of getCity method, of class Employee.
      */
     @Test
@@ -243,6 +288,30 @@ public class EmployeeTest {
 	instance.setCity(city);
 	String result = instance.getCity();
 	assertEquals(city, result);
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testConstructorCityException() {
+	System.out.println("setCity");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	Employee instance = new Employee(null, "123 45th Street", null, "IL", "01/01/1969", "IT", "Peon", "Hi There");
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testSetCityException() {
+	System.out.println("setCity");
+	String city = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	instance.setCity(city);
     }
 
     /**
@@ -271,6 +340,30 @@ public class EmployeeTest {
     }
 
     /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testConstructorStateException() {
+	System.out.println("setState");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	Employee instance = new Employee(null, "123 45th Street", "Normal", null, "01/01/1969", "IT", "Peon", "Hi There");
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testSetStateException() {
+	System.out.println("setState");
+	String state = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	instance.setState(state);
+    }
+
+    /**
      * Test of getDepartment method, of class Employee.
      */
     @Test
@@ -293,6 +386,30 @@ public class EmployeeTest {
 	instance.setDepartment(department);
 	String result = instance.getDepartment();
 	assertEquals(department, result);
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testConstructorDepartmentException() {
+	System.out.println("setDepartment");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	Employee instance = new Employee(null, "123 45th Street", "Normal", "IL", "01/01/1969", null, "Peon", "Hi There");
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testSetDepartmentException() {
+	System.out.println("setDepartment");
+	String department = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	instance.setDepartment(department);
     }
 
     /**
@@ -321,6 +438,30 @@ public class EmployeeTest {
     }
 
     /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testConstructorTitleException() {
+	System.out.println("setTitle");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	Employee instance = new Employee(null, "123 45th Street", "Normal", "IL", "01/01/1969", "IT", null, "Hi There");
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testSetTitleException() {
+	System.out.println("setTitle");
+	String title = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	instance.setTitle(title);
+    }
+
+    /**
      * Test of getSupervisor method, of class Employee.
      */
     @Test
@@ -343,6 +484,30 @@ public class EmployeeTest {
 	instance.setSupervisor(supervisor);
 	String result = instance.getSupervisor();
 	assertEquals(supervisor, result);
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testConstructorSupervisorException() {
+	System.out.println("setSupervisor");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	Employee instance = new Employee(null, "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", null);
+    }
+
+    /**
+     * Test of setName method, of class Employee.
+     */
+    @Test
+    public void testSetSupervisorException() {
+	System.out.println("setSupervisor");
+	String supervisor = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Name cannot be null!"));
+	instance.setSupervisor(supervisor);
     }
 
     /**
@@ -390,6 +555,26 @@ public class EmployeeTest {
 	dateFormat.setTimeZone(result.getTimeZone());
 	String resultStr = dateFormat.format(result.getTime());
 	assertEquals(hireDate, resultStr);
+    }
+
+    @Test
+    public void testSetHireDate_CalendarException() {
+	System.out.println("setHireDate");
+	Calendar hireDate = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Birthday cannot be null!"));
+	instance.setHireDate(hireDate);
+    }
+
+    @Test
+    public void testSetHireDate_StringException() {
+	System.out.println("setHireDate");
+	String hireDate = null;
+	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Birthday cannot be null!"));
+	instance.setHireDate(hireDate);
     }
 
 }

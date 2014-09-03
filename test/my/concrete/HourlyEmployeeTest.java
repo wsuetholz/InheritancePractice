@@ -11,6 +11,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import static org.junit.Assert.*;
 
 /**
@@ -18,6 +20,9 @@ import static org.junit.Assert.*;
  * @author wsuetholz
  */
 public class HourlyEmployeeTest {
+
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
     
     public HourlyEmployeeTest() {
     }
@@ -63,6 +68,25 @@ public class HourlyEmployeeTest {
 	assertEquals(hourlyWage, result, 0.0);
     }
 
+    @Test
+    public void testConstructSetHourlyWageException() {
+	System.out.println("setHourlyWage");
+	double hourlyWage = -1.0;
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", hourlyWage, 10);
+    }
+
+    @Test
+    public void testSetHourlyWageException() {
+	System.out.println("setHourlyWage");
+	double hourlyWage = -1.0;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, 10);
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	instance.setHourlyWage(hourlyWage);
+    }
+
     /**
      * Test of getHoursWorked method, of class HourlyEmployee.
      */
@@ -86,6 +110,25 @@ public class HourlyEmployeeTest {
 	instance.setHoursWorked(hoursWorked);
 	long result = instance.getHoursWorked();
 	assertEquals(hoursWorked, result);
+    }
+
+    @Test
+    public void testConstructSetHoursWorkedException() {
+	System.out.println("setHoursWorked");
+	long hoursWorked = -1;
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, hoursWorked);
+    }
+
+    @Test
+    public void testSetHoursWorkedException() {
+	System.out.println("setHoursWorked");
+	long hoursWorked = -1;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, 10);
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	instance.setHoursWorked(hoursWorked);
     }
 
     /**

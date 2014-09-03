@@ -11,6 +11,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import static org.junit.Assert.*;
 
 /**
@@ -18,6 +20,9 @@ import static org.junit.Assert.*;
  * @author wsuetholz
  */
 public class SalaryPlusCommissionEmployeeTest {
+
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
     
     public SalaryPlusCommissionEmployeeTest() {
     }
@@ -63,6 +68,44 @@ public class SalaryPlusCommissionEmployeeTest {
 	assertEquals(commissionPercentage, result, 0.0);
     }
 
+    @Test
+    public void testConstructSetCommissionPercentageException() {
+	System.out.println("setCommissionPercentage");
+	float commissionPercentage = -1.0f;
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	SalaryPlusCommissionEmployee instance = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, commissionPercentage, 1500.00, 25000.00);
+    }
+
+    @Test
+    public void testSetCommissionPercentageException() {
+	System.out.println("setCommissionPercentage");
+	float commissionPercentage = -1.0f;
+	SalaryPlusCommissionEmployee instance = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, 25000.00);
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	instance.setCommissionPercentage(commissionPercentage);
+    }
+
+    @Test
+    public void testConstructSetCommissionPercentageBigException() {
+	System.out.println("setCommissionPercentage");
+	float commissionPercentage = 101.0f;
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	SalaryPlusCommissionEmployee instance = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, commissionPercentage, 1500.00, 25000.00);
+    }
+
+    @Test
+    public void testSetCommissionPercentageBigException() {
+	System.out.println("setCommissionPercentage");
+	float commissionPercentage = 101.0f;
+	SalaryPlusCommissionEmployee instance = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, 25000.00);
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	instance.setCommissionPercentage(commissionPercentage);
+    }
+
     /**
      * Test of calculateCommission method, of class SalaryPlusCommissionEmployee.
      */
@@ -98,6 +141,25 @@ public class SalaryPlusCommissionEmployeeTest {
 	instance.setPeriodGrossSalesAmount(periodGrossSalesAmount);
 	double result = instance.getPeriodGrossSalesAmount();
 	assertEquals(periodGrossSalesAmount, result, 0.0);
+    }
+
+    @Test
+    public void testConstructSetPeriodGrossSalesException() {
+	System.out.println("setPeriodGrossSales");
+	double periodGrossSales = -1.0;
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	SalaryPlusCommissionEmployee instance = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, periodGrossSales, 25000.00);
+    }
+
+    @Test
+    public void testSetPeriodGrossSalesException() {
+	System.out.println("setPeriodGrossSales");
+	double periodGrossSales = -1.0;
+	SalaryPlusCommissionEmployee instance = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, 25000.00);
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	instance.setPeriodGrossSalesAmount(periodGrossSales);
     }
 
     /**
@@ -139,4 +201,23 @@ public class SalaryPlusCommissionEmployeeTest {
 	assertEquals(periodTargetSalesAmount, result, 0.0);
     }
     
+    @Test
+    public void testConstructSetPeriodTargetSalesException() {
+	System.out.println("setPeriodTargetSales");
+	double periodTargetSales = -1.0;
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	SalaryPlusCommissionEmployee instance = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, periodTargetSales);
+    }
+
+    @Test
+    public void testSetPeriodTargetSalesException() {
+	System.out.println("setPeriodGrossSales");
+	double periodTargetSales = -1.0;
+	SalaryPlusCommissionEmployee instance = new SalaryPlusCommissionEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, 25000.00);
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	instance.setPeriodTargetSalesAmount(periodTargetSales);
+    }
+
 }
