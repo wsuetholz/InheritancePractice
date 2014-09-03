@@ -5,8 +5,15 @@
  */
 package myabstract;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import my.concrete.*;
 import java.util.Calendar;
+import static java.util.Calendar.DATE;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
+import java.util.Locale;
 
 /**
  *
@@ -88,6 +95,163 @@ public class HourlyEmployee extends Employee {
      */
     public void incrementHoursWorked(long hoursWorkedIncrement) {
 	this.hoursWorked += hoursWorkedIncrement;
+    }
+
+    /**
+     * @param name the Name to set
+     */
+    @Override
+    public void setName(String name) throws IllegalArgumentException {
+	if (name == null) {
+	    throw new IllegalArgumentException("Name cannot be null!");
+	}
+	this.name = name;
+    }
+
+    /**
+     * @param birthday the birthday to set
+     */
+    @Override
+    public void setBirthday(Calendar birthday) throws IllegalArgumentException {
+	if (birthday == null) {
+	    throw new IllegalArgumentException("Birthday cannot be null!");
+	}
+
+	Calendar now = Calendar.getInstance(Locale.US);
+	if (now.before(birthday)) {
+	    throw new IllegalArgumentException("Birthday cannot be in the future!");
+	}
+
+	this.birthday = birthday;
+    }
+
+    /**
+     * @param birthday the birthday to set in MM/DD/YYYY format
+     */
+    @Override
+    public void setBirthday(String birthday) throws IllegalArgumentException {
+	if (birthday == null) {
+	    throw new IllegalArgumentException("Birthday cannot be null!");
+	}
+
+	DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+	Calendar bDay = Calendar.getInstance(Locale.US);
+	try {
+	    bDay.setTime(dateFormat.parse(birthday));
+	} catch (ParseException e) {
+	    throw new IllegalArgumentException("Invalid Birthday Format!  " + e.getMessage());
+	}
+
+	Calendar now = Calendar.getInstance(Locale.US);
+	if (now.before(bDay)) {
+	    throw new IllegalArgumentException("Birthday cannot be in the future!");
+	}
+
+	this.birthday = bDay;
+    }
+
+    /**
+     * @param streetAddress the streetAddress to set
+     */
+    @Override
+    public void setStreetAddress(String streetAddress) throws IllegalArgumentException {
+	if (streetAddress == null) {
+	    throw new IllegalArgumentException("Street Address cannot be null!");
+	}
+
+	this.streetAddress = streetAddress;
+    }
+
+    /**
+     * @param city the city to set
+     */
+    @Override
+    public void setCity(String city) throws IllegalArgumentException {
+	if (city == null) {
+	    throw new IllegalArgumentException("City cannot be null!");
+	}
+
+	this.city = city;
+    }
+
+    /**
+     * @param state the state to set
+     */
+    @Override
+    public void setState(String state) throws IllegalArgumentException {
+	if (state == null) {
+	    throw new IllegalArgumentException("State cannot be null!");
+	}
+
+	this.state = state;
+    }
+
+    /**
+     * @param department the department to set
+     */
+    @Override
+    public void setDepartment(String department) throws IllegalArgumentException {
+	if (department == null) {
+	    throw new IllegalArgumentException("Department cannot be null!");
+	}
+
+	this.department = department;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    @Override
+    public void setTitle(String title) throws IllegalArgumentException {
+	if (title == null) {
+	    throw new IllegalArgumentException("Title cannot be null!");
+	}
+
+	this.title = title;
+    }
+
+    /**
+     * @param supervisor the supervisor to set
+     */
+    @Override
+    public void setSupervisor(String supervisor) throws IllegalArgumentException {
+	if (supervisor == null) {
+	    throw new IllegalArgumentException("Supervisor cannot be null!");
+	}
+
+	this.supervisor = supervisor;
+    }
+
+    /**
+     * @param hireDate the hireDate to set
+     */
+    @Override
+    public void setHireDate(Calendar hireDate) throws IllegalArgumentException {
+	if (hireDate == null) {
+	    throw new IllegalArgumentException("HireDate cannot be null!");
+	}
+
+	this.hireDate = hireDate;
+    }
+
+    /**
+     * @param hireDate the hireDate to set in MM/DD/YYYY format
+     */
+    @Override
+    public void setHireDate(String hireDate) throws IllegalArgumentException {
+	if (hireDate == null) {
+	    throw new IllegalArgumentException("HireDate cannot be null!");
+	}
+
+	DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+	Calendar hDate = Calendar.getInstance(Locale.US);
+	try {
+	    hDate.setTime(dateFormat.parse(hireDate));
+	} catch (ParseException e) {
+	    throw new IllegalArgumentException("Invalid HireDate Format!  " + e.getMessage());
+	}
+
+	this.hireDate = hDate;
     }
 
 }
