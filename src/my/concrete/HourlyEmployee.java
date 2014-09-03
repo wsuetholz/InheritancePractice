@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package my.concrete;
 
 import java.util.Calendar;
@@ -13,34 +12,35 @@ import java.util.Calendar;
  * @author wsuetholz
  */
 public class HourlyEmployee extends Employee {
+
     private double hourlyWage;
     private long hoursWorked;
 
     public HourlyEmployee(String name,
-			    String streetAddress,
-			    String city,
-			    String state,
-			    String birthday,
-			    String department,
-			    String title,
-			    String supervisor,
-			    double hourlyWage,
-			    long hoursWorked) throws IllegalArgumentException {
+			  String streetAddress,
+			  String city,
+			  String state,
+			  String birthday,
+			  String department,
+			  String title,
+			  String supervisor,
+			  double hourlyWage,
+			  long hoursWorked) throws IllegalArgumentException {
 	super(name, streetAddress, city, state, birthday, department, title, supervisor);
 	setHourlyWage(hourlyWage);
 	setHoursWorked(hoursWorked);
     }
 
     public HourlyEmployee(String name,
-			    String streetAddress,
-			    String city,
-			    String state,
-			    Calendar birthday,
-			    String department,
-			    String title,
-			    String supervisor,
-			    double hourlyWage,
-			    long hoursWorked) throws IllegalArgumentException {
+			  String streetAddress,
+			  String city,
+			  String state,
+			  Calendar birthday,
+			  String department,
+			  String title,
+			  String supervisor,
+			  double hourlyWage,
+			  long hoursWorked) throws IllegalArgumentException {
 	super(name, streetAddress, city, state, birthday, department, title, supervisor);
 	setHourlyWage(hourlyWage);
 	setHoursWorked(hoursWorked);
@@ -60,7 +60,7 @@ public class HourlyEmployee extends Employee {
 	if (hourlyWage < 0.0) {
 	    throw new IllegalArgumentException("Cannot have employee OWE company!");
 	}
-	
+
 	this.hourlyWage = hourlyWage;
     }
 
@@ -89,5 +89,4 @@ public class HourlyEmployee extends Employee {
 	this.hoursWorked += hoursWorkedIncrement;
     }
 
-    
 }
