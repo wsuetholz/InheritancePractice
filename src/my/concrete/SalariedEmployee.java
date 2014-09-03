@@ -5,7 +5,6 @@
  */
 package my.concrete;
 
-import java.text.ParseException;
 import java.util.Calendar;
 
 /**
@@ -15,6 +14,8 @@ import java.util.Calendar;
 public class SalariedEmployee extends Employee {
 
     private double annualWage;
+    private long payPeriods;
+    private long vacationDays;
 
     public SalariedEmployee(String name,
 			    String streetAddress,
@@ -24,9 +25,13 @@ public class SalariedEmployee extends Employee {
 			    String department,
 			    String title,
 			    String supervisor,
-			    double annualWage) throws ParseException, IllegalArgumentException {
+			    double annualWage,
+			    long payPeriods,
+			    long vacationDays) throws IllegalArgumentException {
 	super(name, streetAddress, city, state, birthday, department, title, supervisor);
-	this.annualWage = validateAnnualWage(annualWage);
+	setAnnualWage(annualWage);
+	setPayPeriods(payPeriods);
+	setVacationDays(vacationDays);	
     }
 
     public SalariedEmployee(String name,
@@ -37,24 +42,20 @@ public class SalariedEmployee extends Employee {
 			    String department,
 			    String title,
 			    String supervisor,
-			    double annualWage) throws IllegalArgumentException {
+			    double annualWage,
+			    long payPeriods,
+			    long vacationDays) throws IllegalArgumentException {
 	super(name, streetAddress, city, state, birthday, department, title, supervisor);
-	this.annualWage = validateAnnualWage(annualWage);
+	setAnnualWage(annualWage);
+	setPayPeriods(payPeriods);
+	setVacationDays(vacationDays);
     }
 
     @Override
     public String toString() {
-	return "SalariedEmployee{" + "annualWage=" + annualWage + '}';
+	return "SalariedEmployee{" + "annualWage=" + annualWage + ", payPeriods=" + payPeriods + ", vacationDays=" + vacationDays + '}';
     }
 
-    /**
-     * @param annualWage the annualWage to validate
-     * @return the annualWage
-     */
-    protected double validateAnnualWage(double annualWage) throws IllegalArgumentException {
-	return annualWage;
-    }
-    
     /**
      * @return the annualWage
      */
@@ -66,7 +67,47 @@ public class SalariedEmployee extends Employee {
      * @param annualWage the annualWage to set
      */
     public void setAnnualWage(double annualWage) throws IllegalArgumentException {
-	this.annualWage = validateAnnualWage(annualWage);
+	this.annualWage = annualWage;
+    }
+
+    /**
+     * @return the payPeriods
+     */
+    public long getPayPeriods() {
+	return payPeriods;
+    }
+
+    /**
+     * @param payPeriods the payPeriods to set
+     */
+    public void setPayPeriods(long payPeriods) {
+	if (payPeriods < 1) {
+	    throw new IllegalArgumentException("Need at least 1 pay period!");
+	}
+	
+	this.payPeriods = payPeriods;
+    }
+
+    /**
+     * @return the vacationDays
+     */
+    public long getVacationDays() {
+	return vacationDays;
+    }
+
+    /**
+     * @param vacationDays the vacationDays to set
+     */
+    public void setVacationDays(long vacationDays) {
+	if (vacationDays < 0) {
+	    throw new IllegalArgumentException("Vacation Days cannot be negative!");
+	}
+
+	if (vacationDays > 365) {
+	    throw new IllegalArgumentException("Cannot have more then a years worth of Vacation Days!");
+	}
+	
+	this.vacationDays = vacationDays;
     }
 
 }
