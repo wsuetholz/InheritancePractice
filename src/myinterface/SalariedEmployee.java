@@ -15,31 +15,31 @@ public interface SalariedEmployee extends Employee {
     /**
      * @return the annualWage
      */
-    double getAnnualWage();
+    public abstract double getAnnualWage();
 
     /**
      * @return the payPeriods
      */
-    long getPayPeriods();
+    public abstract long getPayPeriods();
 
     /**
      * @return the vacationDays
      */
-    long getVacationDays();
+    public abstract long getVacationDays();
 
     /**
      * @param annualWage the annualWage to set
      */
-    void setAnnualWage(double annualWage) throws IllegalArgumentException;
+    public abstract void setAnnualWage(double annualWage) throws IllegalArgumentException;
 
     /**
      * @param payPeriods the payPeriods to set
      */
-    void setPayPeriods(long payPeriods);
+    public abstract void setPayPeriods(long payPeriods);
 
     /**
      * @param vacationDays the vacationDays to set
      */
-    void setVacationDays(long vacationDays);
+    public abstract void setVacationDays(long vacationDays);
     
 }

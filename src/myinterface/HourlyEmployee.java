@@ -15,26 +15,26 @@ public interface HourlyEmployee extends Employee {
     /**
      * @return the hourlyWage
      */
-    double getHourlyWage();
+    public abstract double getHourlyWage();
 
     /**
      * @return the hoursWorked
      */
-    long getHoursWorked();
+    public abstract long getHoursWorked();
 
     /**
      * @param hoursWorked the hoursWorked to set
      */
-    void incrementHoursWorked(long hoursWorkedIncrement);
+    public abstract void incrementHoursWorked(long hoursWorkedIncrement);
 
     /**
      * @param hourlyWage the hourlyWage to set
      */
-    void setHourlyWage(double hourlyWage);
+    public abstract void setHourlyWage(double hourlyWage);
 
     /**
      * @param hoursWorked the hoursWorked to set
      */
-    void setHoursWorked(long hoursWorked);
+    public abstract void setHoursWorked(long hoursWorked);
     
 }

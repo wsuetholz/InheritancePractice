@@ -12,38 +12,38 @@ package myinterface;
  */
 public interface SalaryPlusCommissionEmployee extends SalariedEmployee {
 
-    double calculateCommission();
+    public abstract double calculateCommission();
 
     /**
      * @return the commissionPercentage
      */
-    float getCommissionPercentage();
+    public abstract float getCommissionPercentage();
 
     /**
      * @return the periodGrossSalesAmount
      */
-    double getPeriodGrossSalesAmount();
+    public abstract double getPeriodGrossSalesAmount();
 
     /**
      * @return the periodTargetSalesAmount
      */
-    double getPeriodTargetSalesAmount();
+    public abstract double getPeriodTargetSalesAmount();
 
-    void incrementPeriodGrossSalesAmount(double periodGrossSalesAmountIncrement);
+    public abstract void incrementPeriodGrossSalesAmount(double periodGrossSalesAmountIncrement);
 
     /**
      * @param commissionPercentage the commissionPercentage to set
      */
-    void setCommissionPercentage(float commissionPercentage);
+    public abstract void setCommissionPercentage(float commissionPercentage);
 
     /**
      * @param periodGrossSalesAmount the periodGrossSalesAmount to set
      */
-    void setPeriodGrossSalesAmount(double periodGrossSalesAmount);
+    public abstract void setPeriodGrossSalesAmount(double periodGrossSalesAmount);
 
     /**
      * @param periodTargetSalesAmount the periodTargetSalesAmount to set
      */
-    void setPeriodTargetSalesAmount(double periodTargetSalesAmount);
+    public abstract void setPeriodTargetSalesAmount(double periodTargetSalesAmount);
     
 }
