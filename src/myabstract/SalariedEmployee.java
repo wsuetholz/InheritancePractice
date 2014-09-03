@@ -55,11 +55,6 @@ public class SalariedEmployee extends Employee {
 	setVacationDays(vacationDays);
     }
 
-    @Override
-    public String toString() {
-	return "SalariedEmployee{" + "annualWage=" + annualWage + ", payPeriods=" + payPeriods + ", vacationDays=" + vacationDays + '}';
-    }
-
     /**
      * @return the annualWage
      */

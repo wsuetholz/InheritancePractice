@@ -81,6 +81,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the Name
      */
+    @Override
     public String getName() {
 	return name;
     }
@@ -88,6 +89,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param name the Name to set
      */
+    @Override
     public void setName(String name) throws IllegalArgumentException {
 	if (name == null) {
 	    throw new IllegalArgumentException("Name cannot be null!");
@@ -98,6 +100,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the birthday
      */
+    @Override
     public Calendar getBirthday() {
 	return birthday;
     }
@@ -105,6 +108,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param birthday the birthday to set
      */
+    @Override
     public void setBirthday(Calendar birthday) throws IllegalArgumentException {
 	if (birthday == null) {
 	    throw new IllegalArgumentException("Birthday cannot be null!");
@@ -121,6 +125,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param birthday the birthday to set in MM/DD/YYYY format
      */
+    @Override
     public void setBirthday(String birthday) throws IllegalArgumentException {
 	if (birthday == null) {
 	    throw new IllegalArgumentException("Birthday cannot be null!");
@@ -145,7 +150,8 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the age calculated from birth date to today.
      */
-    public long getAge() {
+    @Override
+    public long getAge() throws IllegalArgumentException {
 	Calendar now = Calendar.getInstance(Locale.US);
 	long age = now.get(YEAR) - birthday.get(YEAR);
 	if (birthday.get(MONTH) > now.get(MONTH)
@@ -159,6 +165,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the streetAddress
      */
+    @Override
     public String getStreetAddress() {
 	return streetAddress;
     }
@@ -166,6 +173,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param streetAddress the streetAddress to set
      */
+    @Override
     public void setStreetAddress(String streetAddress) throws IllegalArgumentException {
 	if (streetAddress == null) {
 	    throw new IllegalArgumentException("Street Address cannot be null!");
@@ -177,6 +185,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the city
      */
+    @Override
     public String getCity() {
 	return city;
     }
@@ -184,6 +193,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param city the city to set
      */
+    @Override
     public void setCity(String city) throws IllegalArgumentException {
 	if (city == null) {
 	    throw new IllegalArgumentException("City cannot be null!");
@@ -195,6 +205,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the state
      */
+    @Override
     public String getState() {
 	return state;
     }
@@ -202,6 +213,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param state the state to set
      */
+    @Override
     public void setState(String state) throws IllegalArgumentException {
 	if (state == null) {
 	    throw new IllegalArgumentException("State cannot be null!");
@@ -213,6 +225,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the department
      */
+    @Override
     public String getDepartment() {
 	return department;
     }
@@ -220,6 +233,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param department the department to set
      */
+    @Override
     public void setDepartment(String department) throws IllegalArgumentException {
 	if (department == null) {
 	    throw new IllegalArgumentException("Department cannot be null!");
@@ -231,6 +245,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the title
      */
+    @Override
     public String getTitle() {
 	return title;
     }
@@ -238,6 +253,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param title the title to set
      */
+    @Override
     public void setTitle(String title) throws IllegalArgumentException {
 	if (title == null) {
 	    throw new IllegalArgumentException("Title cannot be null!");
@@ -249,6 +265,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the supervisor
      */
+    @Override
     public String getSupervisor() {
 	return supervisor;
     }
@@ -256,6 +273,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param supervisor the supervisor to set
      */
+    @Override
     public void setSupervisor(String supervisor) throws IllegalArgumentException {
 	if (supervisor == null) {
 	    throw new IllegalArgumentException("Supervisor cannot be null!");
@@ -267,6 +285,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @return the hireDate
      */
+    @Override
     public Calendar getHireDate() {
 	return hireDate;
     }
@@ -274,6 +293,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param hireDate the hireDate to set
      */
+    @Override
     public void setHireDate(Calendar hireDate) throws IllegalArgumentException {
 	if (hireDate == null) {
 	    throw new IllegalArgumentException("HireDate cannot be null!");
@@ -285,6 +305,7 @@ public class HourlyEmployee implements Employee {
     /**
      * @param hireDate the hireDate to set in MM/DD/YYYY format
      */
+    @Override
     public void setHireDate(String hireDate) throws IllegalArgumentException {
 	if (hireDate == null) {
 	    throw new IllegalArgumentException("HireDate cannot be null!");
@@ -300,6 +321,7 @@ public class HourlyEmployee implements Employee {
 
 	this.hireDate = hDate;
     }
+
     /**
      * @return the hourlyWage
      */
