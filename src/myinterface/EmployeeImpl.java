@@ -14,7 +14,7 @@ import java.util.Locale;
  *
  * @author wsuetholz
  */
-public class Employee {
+public class EmployeeImpl {
 
     private String name;
     private Calendar birthday;
@@ -26,7 +26,7 @@ public class Employee {
     private String supervisor;
     private Calendar hireDate;
 
-    public Employee(String name,
+    public EmployeeImpl(String name,
 		    String streetAddress,
 		    String city,
 		    String state,
@@ -45,7 +45,7 @@ public class Employee {
 	this.hireDate = Calendar.getInstance(Locale.US);
     }
 
-    public Employee(String name,
+    public EmployeeImpl(String name,
 		    String streetAddress,
 		    String city,
 		    String state,

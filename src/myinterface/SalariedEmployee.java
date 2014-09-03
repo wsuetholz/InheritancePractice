@@ -12,7 +12,7 @@ import java.util.Calendar;
  *
  * @author wsuetholz
  */
-public class SalariedEmployee extends Employee {
+public class SalariedEmployee extends EmployeeImpl {
 
     private double annualWage;
     private long payPeriods;
