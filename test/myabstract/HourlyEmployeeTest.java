@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package my.concrete;
+
+package myabstract;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,32 +17,31 @@ import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 import static org.junit.Assert.*;
-import static org.junit.matchers.JUnitMatchers.containsString;
 
 /**
  *
  * @author wsuetholz
  */
-public class EmployeeTest {
+public class HourlyEmployeeTest {
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
-
-    public EmployeeTest() {
+    
+    public HourlyEmployeeTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
     }
-
+    
     @After
     public void tearDown() {
     }
@@ -52,7 +52,7 @@ public class EmployeeTest {
     @Test
     public void testGetName() {
 	System.out.println("getName");
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	String expResult = "Joe C Doe";
 	String result = instance.getName();
 	assertEquals(expResult, result);
@@ -65,7 +65,7 @@ public class EmployeeTest {
     public void testSetName() {
 	System.out.println("setName");
 	String name = "John Q Public";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setName(name);
 	String result = instance.getName();
 	assertEquals(name, result);
@@ -80,7 +80,7 @@ public class EmployeeTest {
 	String name = null;
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
-	Employee instance = new Employee(null, "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee(name, "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
     }
 
     /**
@@ -90,7 +90,7 @@ public class EmployeeTest {
     public void testSetNameException() {
 	System.out.println("setName");
 	String name = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
 	instance.setName(name);
@@ -106,7 +106,7 @@ public class EmployeeTest {
 	expResult.set(Calendar.YEAR, 1969);
 	expResult.set(Calendar.MONTH, 01);
 	expResult.set(Calendar.DAY_OF_MONTH, 02);
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", expResult, "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", expResult, "IT", "Peon", "Hi There", 15.00, 10);
 	Calendar result = instance.getBirthday();
 	assertEquals(expResult, result);
     }
@@ -121,7 +121,7 @@ public class EmployeeTest {
 	birthday.set(Calendar.YEAR, 1969);
 	birthday.set(Calendar.MONTH, 01);
 	birthday.set(Calendar.DAY_OF_MONTH, 02);
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setBirthday(birthday);
 	Calendar result = instance.getBirthday();
 	assertEquals(birthday, result);
@@ -133,14 +133,14 @@ public class EmployeeTest {
 	Calendar birthday = null;
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be null!"));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There", 15.00, 10);
     }
 
     @Test
     public void testSetBirthday_CalendarException() {
 	System.out.println("setBirthday");
 	Calendar birthday = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be null!"));
 	instance.setBirthday(birthday);
@@ -151,7 +151,7 @@ public class EmployeeTest {
 	System.out.println("setBirthday");
 	Calendar birthday = Calendar.getInstance(Locale.US);
 	birthday.set(Calendar.YEAR, (birthday.get(Calendar.YEAR) + 1));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be in the future!"));
 	instance.setBirthday(birthday);
@@ -164,7 +164,7 @@ public class EmployeeTest {
     public void testSetBirthday_String() {
 	System.out.println("setBirthday");
 	String birthday = "01/02/1969";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setBirthday(birthday);
 	Calendar result = instance.getBirthday();
 	SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -179,14 +179,14 @@ public class EmployeeTest {
 	String birthday = null;
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be null!"));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There", 15.00, 10);
     }
 
     @Test
     public void testSetBirthday_StringException() {
 	System.out.println("setBirthday");
 	String birthday = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be null!"));
 	instance.setBirthday(birthday);
@@ -196,7 +196,7 @@ public class EmployeeTest {
     public void testSetFutureBirthday_StringException() {
 	System.out.println("setBirthday");
 	String birthday = "01/02/2250";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be null!"));
 	instance.setBirthday(birthday);
@@ -211,7 +211,7 @@ public class EmployeeTest {
 	long expResult = 45L;
 	Calendar birthday = Calendar.getInstance(Locale.US);
 	birthday.set(Calendar.YEAR, (birthday.get(Calendar.YEAR) - (int) expResult));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", birthday, "IT", "Peon", "Hi There", 15.00, 10);
 	long result = instance.getAge();
 	assertEquals(expResult, result);
     }
@@ -222,7 +222,7 @@ public class EmployeeTest {
     @Test
     public void testGetStreetAddress() {
 	System.out.println("getStreetAddress");
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	String expResult = "123 45th Street";
 	String result = instance.getStreetAddress();
 	assertEquals(expResult, result);
@@ -235,7 +235,7 @@ public class EmployeeTest {
     public void testSetStreetAddress() {
 	System.out.println("setStreetAddress");
 	String streetAddress = "987 65th Street";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setStreetAddress(streetAddress);
 	String result = instance.getStreetAddress();
 	assertEquals(streetAddress, result);
@@ -249,7 +249,7 @@ public class EmployeeTest {
 	System.out.println("setStreetAddress");
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Address cannot be null!"));
-	Employee instance = new Employee("Joe C Doe", null, "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", null, "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
     }
 
     /**
@@ -259,7 +259,7 @@ public class EmployeeTest {
     public void testSetStreetAddressException() {
 	System.out.println("setStreetAddress");
 	String streetAddress = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
 	instance.setStreetAddress(streetAddress);
@@ -271,7 +271,7 @@ public class EmployeeTest {
     @Test
     public void testGetCity() {
 	System.out.println("getCity");
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	String expResult = "Normal";
 	String result = instance.getCity();
 	assertEquals(expResult, result);
@@ -284,7 +284,7 @@ public class EmployeeTest {
     public void testSetCity() {
 	System.out.println("setCity");
 	String city = "Abnormal";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setCity(city);
 	String result = instance.getCity();
 	assertEquals(city, result);
@@ -298,7 +298,7 @@ public class EmployeeTest {
 	System.out.println("setCity");
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", null, "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", null, "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
     }
 
     /**
@@ -308,7 +308,7 @@ public class EmployeeTest {
     public void testSetCityException() {
 	System.out.println("setCity");
 	String city = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
 	instance.setCity(city);
@@ -320,7 +320,7 @@ public class EmployeeTest {
     @Test
     public void testGetState() {
 	System.out.println("getState");
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	String expResult = "IL";
 	String result = instance.getState();
 	assertEquals(expResult, result);
@@ -333,7 +333,7 @@ public class EmployeeTest {
     public void testSetState() {
 	System.out.println("setState");
 	String state = "WI";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setState(state);
 	String result = instance.getState();
 	assertEquals(state, result);
@@ -347,7 +347,7 @@ public class EmployeeTest {
 	System.out.println("setState");
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", null, "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", null, "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
     }
 
     /**
@@ -357,7 +357,7 @@ public class EmployeeTest {
     public void testSetStateException() {
 	System.out.println("setState");
 	String state = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
 	instance.setState(state);
@@ -369,7 +369,7 @@ public class EmployeeTest {
     @Test
     public void testGetDepartment() {
 	System.out.println("getDepartment");
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	String expResult = "IT";
 	String result = instance.getDepartment();
 	assertEquals(expResult, result);
@@ -382,7 +382,7 @@ public class EmployeeTest {
     public void testSetDepartment() {
 	System.out.println("setDepartment");
 	String department = "SALES";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setDepartment(department);
 	String result = instance.getDepartment();
 	assertEquals(department, result);
@@ -396,7 +396,7 @@ public class EmployeeTest {
 	System.out.println("setDepartment");
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", null, "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", null, "Peon", "Hi There", 15.00, 10);
     }
 
     /**
@@ -406,7 +406,7 @@ public class EmployeeTest {
     public void testSetDepartmentException() {
 	System.out.println("setDepartment");
 	String department = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
 	instance.setDepartment(department);
@@ -418,7 +418,7 @@ public class EmployeeTest {
     @Test
     public void testGetTitle() {
 	System.out.println("getTitle");
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	String expResult = "Peon";
 	String result = instance.getTitle();
 	assertEquals(expResult, result);
@@ -431,7 +431,7 @@ public class EmployeeTest {
     public void testSetTitle() {
 	System.out.println("setTitle");
 	String title = "Servant";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setTitle(title);
 	String result = instance.getTitle();
 	assertEquals(title, result);
@@ -445,7 +445,7 @@ public class EmployeeTest {
 	System.out.println("setTitle");
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", null, "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", null, "Hi There", 15.00, 10);
     }
 
     /**
@@ -455,7 +455,7 @@ public class EmployeeTest {
     public void testSetTitleException() {
 	System.out.println("setTitle");
 	String title = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
 	instance.setTitle(title);
@@ -467,7 +467,7 @@ public class EmployeeTest {
     @Test
     public void testGetSupervisor() {
 	System.out.println("getSupervisor");
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	String expResult = "Hi There";
 	String result = instance.getSupervisor();
 	assertEquals(expResult, result);
@@ -480,7 +480,7 @@ public class EmployeeTest {
     public void testSetSupervisor() {
 	System.out.println("setSupervisor");
 	String supervisor = "So Long";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setSupervisor(supervisor);
 	String result = instance.getSupervisor();
 	assertEquals(supervisor, result);
@@ -494,7 +494,7 @@ public class EmployeeTest {
 	System.out.println("setSupervisor");
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", null);
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", null, 15.00, 10);
     }
 
     /**
@@ -504,7 +504,7 @@ public class EmployeeTest {
     public void testSetSupervisorException() {
 	System.out.println("setSupervisor");
 	String supervisor = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Name cannot be null!"));
 	instance.setSupervisor(supervisor);
@@ -516,7 +516,7 @@ public class EmployeeTest {
     @Test
     public void testGetHireDate() {
 	System.out.println("getHireDate");
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	Calendar expResult = Calendar.getInstance(Locale.US);
 	Calendar result = instance.getHireDate();
 	assertEquals(expResult, result);
@@ -531,7 +531,7 @@ public class EmployeeTest {
 	long expYears = 5L;
 	Calendar hireDate = Calendar.getInstance(Locale.US);
 	hireDate.set(Calendar.YEAR, (hireDate.get(Calendar.YEAR) - (int) expYears));
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setHireDate(hireDate);
 	Calendar result = instance.getHireDate();
 	assertEquals(hireDate, result);
@@ -544,7 +544,7 @@ public class EmployeeTest {
     public void testSetHireDate_String() {
 	System.out.println("setHireDate");
 	String hireDate = "01/10/2009";
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	instance.setHireDate(hireDate);
 	Calendar result = Calendar.getInstance(Locale.US);
 	result.set(Calendar.YEAR, 2009);
@@ -561,7 +561,7 @@ public class EmployeeTest {
     public void testSetHireDate_CalendarException() {
 	System.out.println("setHireDate");
 	Calendar hireDate = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be null!"));
 	instance.setHireDate(hireDate);
@@ -571,10 +571,112 @@ public class EmployeeTest {
     public void testSetHireDate_StringException() {
 	System.out.println("setHireDate");
 	String hireDate = null;
-	Employee instance = new Employee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
 	exception.expect(IllegalArgumentException.class);
 	//exception.expect(containsString("Birthday cannot be null!"));
 	instance.setHireDate(hireDate);
     }
 
+    /**
+     * Test of getHourlyWage method, of class HourlyEmployee.
+     */
+    @Test
+    public void testGetHourlyWage() {
+	System.out.println("getHourlyWage");
+	double expResult = 15.0;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", expResult, 10);
+	double result = instance.getHourlyWage();
+	assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of setHourlyWage method, of class HourlyEmployee.
+     */
+    @Test
+    public void testSetHourlyWage() {
+	System.out.println("setHourlyWage");
+	double hourlyWage = 17.50;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
+	instance.setHourlyWage(hourlyWage);
+	double result = instance.getHourlyWage();
+	assertEquals(hourlyWage, result, 0.0);
+    }
+
+    @Test
+    public void testConstructSetHourlyWageException() {
+	System.out.println("setHourlyWage");
+	double hourlyWage = -1.0;
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", hourlyWage, 10);
+    }
+
+    @Test
+    public void testSetHourlyWageException() {
+	System.out.println("setHourlyWage");
+	double hourlyWage = -1.0;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, 10);
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	instance.setHourlyWage(hourlyWage);
+    }
+
+    /**
+     * Test of getHoursWorked method, of class HourlyEmployee.
+     */
+    @Test
+    public void testGetHoursWorked() {
+	System.out.println("getHoursWorked");
+	long expResult = 10L;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, expResult);
+	long result = instance.getHoursWorked();
+	assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setHoursWorked method, of class HourlyEmployee.
+     */
+    @Test
+    public void testSetHoursWorked() {
+	System.out.println("setHoursWorked");
+	long hoursWorked = 15L;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
+	instance.setHoursWorked(hoursWorked);
+	long result = instance.getHoursWorked();
+	assertEquals(hoursWorked, result);
+    }
+
+    @Test
+    public void testConstructSetHoursWorkedException() {
+	System.out.println("setHoursWorked");
+	long hoursWorked = -1;
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, hoursWorked);
+    }
+
+    @Test
+    public void testSetHoursWorkedException() {
+	System.out.println("setHoursWorked");
+	long hoursWorked = -1;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, 10);
+	exception.expect(IllegalArgumentException.class);
+	//exception.expect(containsString("Cannot have employee OWE company!"));
+	instance.setHoursWorked(hoursWorked);
+    }
+
+    /**
+     * Test of incrementHoursWorked method, of class HourlyEmployee.
+     */
+    @Test
+    public void testIncrementHoursWorked() {
+	System.out.println("incrementHoursWorked");
+	long hoursWorkedIncrement = 5L;
+	long expResult = 10L + hoursWorkedIncrement;
+	HourlyEmployee instance = new HourlyEmployee("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.00, 10);
+	instance.incrementHoursWorked(hoursWorkedIncrement);
+	long result = instance.getHoursWorked();
+	assertEquals(expResult, result);
+    }
+    
 }
