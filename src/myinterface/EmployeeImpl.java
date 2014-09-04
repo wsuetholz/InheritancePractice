@@ -1,6 +1,5 @@
 package myinterface;
 
-import my.concrete.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,7 +15,10 @@ import java.util.Locale;
  */
 public class EmployeeImpl implements Employee {
 
-    private String name;
+    private long empId;
+    private String firstName;
+    private String middleInitial;
+    private String lastName;
     private Calendar birthday;
     private String streetAddress;
     private String city;
@@ -26,15 +28,21 @@ public class EmployeeImpl implements Employee {
     private String supervisor;
     private Calendar hireDate;
 
-    public EmployeeImpl(String name,
-		    String streetAddress,
-		    String city,
-		    String state,
-		    String birthday,
-		    String department,
-		    String title,
-		    String supervisor) throws IllegalArgumentException {
-	setName(name);
+    public EmployeeImpl(long empId,
+			String firstName,
+			String middleInitial,
+			String lastName,
+			String streetAddress,
+			String city,
+			String state,
+			String birthday,
+			String department,
+			String title,
+			String supervisor) throws IllegalArgumentException {
+	setEmpId(empId);
+	setFirstName(firstName);
+	setMiddleInitial(middleInitial);
+	setLastName(lastName);
 	setStreetAddress(streetAddress);
 	setCity(city);
 	setState(state);
@@ -45,15 +53,21 @@ public class EmployeeImpl implements Employee {
 	this.hireDate = Calendar.getInstance(Locale.US);
     }
 
-    public EmployeeImpl(String name,
-		    String streetAddress,
-		    String city,
-		    String state,
-		    Calendar birthday,
-		    String department,
-		    String title,
-		    String supervisor) throws IllegalArgumentException {
-	setName(name);
+    public EmployeeImpl(long empId,
+			String firstName,
+			String middleInitial,
+			String lastName,
+			String streetAddress,
+			String city,
+			String state,
+			Calendar birthday,
+			String department,
+			String title,
+			String supervisor) throws IllegalArgumentException {
+	setEmpId(empId);
+	setFirstName(firstName);
+	setMiddleInitial(middleInitial);
+	setLastName(lastName);
 	setStreetAddress(streetAddress);
 	setCity(city);
 	setState(state);
@@ -65,22 +79,92 @@ public class EmployeeImpl implements Employee {
     }
 
     /**
-     * @return the Name
+     * @return the Employee ID
+     */
+    @Override
+    public long getEmpId() {
+	return empId;
+    }
+
+    /**
+     * @param empId the Employee ID to set
+     */
+    @Override
+    public void setEmpId(long empId) throws IllegalArgumentException {
+	if (empId <= 0) {
+	    throw new IllegalArgumentException("Employee ID has to be greater then 0!");
+	}
+	this.empId = empId;
+    }
+
+    /**
+     * @return the Name as First M. Last
      */
     @Override
     public String getName() {
-	return name;
+	StringBuilder name = new StringBuilder(getFirstName());
+	name.append(" ");
+	name.append(getMiddleInitial());
+	name.append(". ");
+	name.append(getLastName());
+	return name.toString();
     }
 
     /**
-     * @param name the Name to set
+     * @return the First Name
      */
     @Override
-    public void setName(String name) throws IllegalArgumentException {
-	if (name == null) {
-	    throw new IllegalArgumentException("Name cannot be null!");
+    public String getFirstName() {
+	return firstName;
+    }
+
+    /**
+     * @param firstName the First Name to set
+     */
+    @Override
+    public void setFirstName(String firstName) throws IllegalArgumentException {
+	if (firstName == null) {
+	    throw new IllegalArgumentException("firstName cannot be null!");
 	}
-	this.name = name;
+	this.firstName = firstName;
+    }
+
+    /**
+     * @return the Middle Initial
+     */
+    @Override
+    public String getMiddleInitial() {
+	return middleInitial;
+    }
+
+    /**
+     * @param middleInitial the Middle Initial to set
+     */
+    @Override
+    public void setMiddleInitial(String middleInitial) throws IllegalArgumentException {
+	if (middleInitial == null) {
+	    throw new IllegalArgumentException("middleInitial cannot be null!");
+	}
+	this.middleInitial = middleInitial;
+    }
+
+    /**
+     * @return the Last Name
+     */
+    @Override
+    public String getLastName() {
+	return lastName;
+    }
+
+    /**
+     * @param lastName the Last Name to set
+     */
+    @Override
+    public void setLastName(String lastName) throws IllegalArgumentException {
+	if (lastName == null) {
+	    throw new IllegalArgumentException("lastName cannot be null!");
+	}
+	this.lastName = lastName;
     }
 
     /**
@@ -102,7 +186,7 @@ public class EmployeeImpl implements Employee {
 
 	Calendar now = Calendar.getInstance(Locale.US);
 	if (now.before(birthday)) {
-	    throw new IllegalArgumentException("Birthday cannot be in the future!");	    
+	    throw new IllegalArgumentException("Birthday cannot be in the future!");
 	}
 
 	this.birthday = birthday;
@@ -124,10 +208,10 @@ public class EmployeeImpl implements Employee {
 	} catch (ParseException e) {
 	    throw new IllegalArgumentException("Invalid Birthday Format!  " + e.getMessage());
 	}
-	
+
 	Calendar now = Calendar.getInstance(Locale.US);
 	if (now.before(bDay)) {
-	    throw new IllegalArgumentException("Birthday cannot be in the future!");	    
+	    throw new IllegalArgumentException("Birthday cannot be in the future!");
 	}
 
 	this.birthday = bDay;
@@ -144,7 +228,7 @@ public class EmployeeImpl implements Employee {
 	    || (birthday.get(MONTH) == now.get(MONTH) && birthday.get(DATE) > now.get(DATE))) {
 	    age--;
 	}
-	
+
 	return age;
     }
 
@@ -307,4 +391,5 @@ public class EmployeeImpl implements Employee {
 
 	this.hireDate = hDate;
     }
+
 }

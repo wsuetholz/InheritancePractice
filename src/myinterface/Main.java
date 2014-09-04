@@ -12,10 +12,10 @@ package myinterface;
 public class Main {
 
     public static void main(String[] args) {
-	Employee employee = new EmployeeImpl("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
-	HourlyEmployee hourlyEmployee = new HourlyEmployeeImpl("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, 10);
-	SalariedEmployee salariedEmployee = new SalariedEmployeeImpl("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14);
-	SalaryPlusCommissionEmployee salaryPlusCommissionEmployee = new SalaryPlusCommissionEmployeeImpl("Joe C Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, 25000.00);
+	Employee employee = new EmployeeImpl(1, "Joe", "C", "Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There");
+	HourlyEmployee hourlyEmployee = new HourlyEmployee(2, "Joe", "C", "Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 15.0, 10);
+	SalariedEmployee salariedEmployee = new SalariedEmployee(3, "Joe", "C", "Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14);
+	SalaryPlusCommissionEmployee salaryPlusCommissionEmployee = new SalaryPlusCommissionEmployee(4, "Joe", "C", "Doe", "123 45th Street", "Normal", "IL", "01/01/1969", "IT", "Peon", "Hi There", 10000.00, 24, 14, 15.0f, 1500.00, 25000.00);
 
 	Main.printlnEmployee ( employee, "Employee");  // Note, any of the constructed classes could be here!
 	Main.printlnSalariedEmployee ( salariedEmployee, "SalariedEmployee");
